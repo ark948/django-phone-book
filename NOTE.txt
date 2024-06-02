@@ -16,3 +16,13 @@
 > apply migrations
 > add contact model to admin
 > test admin interface
+> install djangorestframework
+> add it to installed_apps
+> add rest_framework config class with default_permission_classes to settings.py
+> update project urls.py to inlcude contacts urls.py
+> update contacts app with:
+    serializers.py
+    views.py
+    urls.py
+> test the browsable api rest interface
+> commit
