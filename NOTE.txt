@@ -45,3 +45,14 @@
 > and three config vars after static_url in settings.py
 > run compile command
 > commit
+
+> update settings.py > rest_framework config var > default_permission_classes from allowAny to IsAuthenticated
+> use the admin interface to create some new users
+> then create some contact items and assign owner
+> now, we need to add login and logout feature so the new test user can login and access the api
+> udpate the project urls.py, add api-auth route
+> now login link must appear in browsable api, use it to login as test user
+> add a custom permission in permissions.py
+> add the custom permission to views
+> test the api
+> commit
