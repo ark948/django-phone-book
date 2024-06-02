@@ -7,3 +7,5 @@
 > add AUTH_USER_MODEL to settings.py
 > make migrations without specifying app name
 > run migrations
+> create superuser (admin-admin@admin.com-1)
+> register the new user model in admin.py
