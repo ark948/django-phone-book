@@ -1,0 +1,9 @@
+> added project base 'core'
+> added contacts app
+> need to register custom user model
+> add accounts app
+> add apps to installed_apps in settings.py
+> define custom user model in accounts/models.py
+> add AUTH_USER_MODEL to settings.py
+> make migrations without specifying app name
+> run migrations
