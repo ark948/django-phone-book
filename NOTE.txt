@@ -105,3 +105,19 @@
 > last commit for dj-rest-auth was for 3 years ago. it is considered garbage
 > skip and use another approach later
 > commit
+
+> adding viewsets and routers for users list
+> add a user serializer to serializers.py to accounts app
+> add users list view and user detail view to accounts/views.py
+> add urls.py to accounts app
+> include this urls.py in project urls.py
+    path("", include("accounts.urls")),
+    path("", include("contacts.urls")),
+> notice i kept both routes empty, there was no problem.
+> add isAdminUser permission to both these views
+> fire up the server and check them in localhost/users
+> add a view that will inherit from viewset to accounts/views.py
+> in accounts/urls.py, define a SimpleRouter and register the viewset with it
+> add router.urls to urlpatterns var
+> check it out (there will be no difference in functionality, only less code was written)
+> commit
