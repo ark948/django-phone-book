@@ -11,6 +11,8 @@
 > register the new user model in admin.py
 > check admin.py to see if it works (and admin user must be there)
 > commit
+
+
 > add contact model contacts/models.py
 > make migrations and specify contact name
 > apply migrations
@@ -25,4 +27,12 @@
     views.py
     urls.py
 > test the browsable api rest interface
+> commit
+
+> we need to add CORS and CSRF
+> pip install django-cors-headers
+> add 'corsheaders' to installed_apps after rest_framework
+> add cors middlware to middlware config var after the session middlware
+> and create a cors_allowed_origins list config var
+> add CSRF protection after cors_allowed_origins
 > commit
