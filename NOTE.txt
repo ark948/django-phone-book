@@ -36,3 +36,12 @@
 > and create a cors_allowed_origins list config var
 > add CSRF protection after cors_allowed_origins
 > commit
+
+> compiling static files and folders
+> add a static directory to project folder
+> install whitenoise package, pip install whitenoise
+> add whitenoise to installed_apps above static files app
+> add whitenoise middlware to middlwares above common middlware
+> and three config vars after static_url in settings.py
+> run compile command
+> commit
