@@ -56,3 +56,52 @@
 > add the custom permission to views
 > test the api
 > commit
+
+> to add authentication (registration)
+> udpate settings.py rest_framework config var (add authentication configs explicitly)
+> add 'rest_framework.authtoken' app to installed_apps (it is already included with django)
+> run migrate
+> check admin interface to see if tokens are added
+> we will use dj-rest-auth and django-allauth
+> login and logout and password reset will come with dj-rest-auth
+> pip install dj-rest-auth
+> add it to installed_apps (add dj_rest_auth)
+> udpate main urls.py to include dj_rest_auth endpoints
+> run server, navigate to localhost/dj-rest-auth/login to check out
+> the route for password reset is localhsot/dj-rest-auth/password/reset (does not work, maybe after an email backend was added)
+> install django-allauth
+> several new configs need to be added to installed_apps
+    "django.contrib.sites", # new
+    "allauth", # new
+    "allauth.account", # new
+    "allauth.socialaccount", # new
+    "dj_rest_auth.registration", # new
+> django-allauth needs to be added to TEMPLATES config after existing context processors
+> set email backend to console
+> add SITE_ID = 1 to settings.py
+> run migrate (this raised an error)
+> (allauth.account.middleware.AccountMiddleware must be added to middlewares)
+> i added it to the end of middlewares
+> trying to run migrations again... (no problem)
+> add registration routes to main urls.py
+    path("api/v1/dj-rest-auth/registration/", include("dj_rest_auth.registration.urls")),
+> run server and check registration (error while turning server on)
+> no module named 'requests'
+> attempting to change the order of allauth middleware (no change)
+> moved up django_rest_framework config var to after installed_apps
+> moved back allauth middleware to end of middlewares
+> installed 'requests' package - pip install requests
+> server turned on with no problem
+> the address for registration is http://127.0.0.1:8000/dj-rest-auth/registration/
+> arman-arman@test.com-hello123*
+> attempting to login (successful)
+> attempting to logout and reset password (error, 
+> django.urls.exceptions.NoReverseMatch: Reverse for 'password_reset_confirm' not found. 
+> 'password_reset_confirm' is not a valid view function or pattern name.)
+> checking if everything is according to book
+> fixed it by adding password reset rouet to main urls.py
+> another problem is raised (similar but for password reset confirm)
+> IMPORTANT: This feature cannot be added using dj-rest-auth
+> last commit for dj-rest-auth was for 3 years ago. it is considered garbage
+> skip and use another approach later
+> commit
