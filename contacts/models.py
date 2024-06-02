@@ -20,7 +20,7 @@ class Contact(models.Model):
         return f"<Contact for {self.owner} - ID:{self.id}>"
     
     @property
-    def full_name(self):
+    def full_name(self) -> str:
         return f"{self.first_name} {self.last_name}"
     
     def get_absolute_url(self):

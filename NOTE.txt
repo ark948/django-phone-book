@@ -121,3 +121,18 @@
 > add router.urls to urlpatterns var
 > check it out (there will be no difference in functionality, only less code was written)
 > commit
+
+> to add schema and documentation
+> pip install drf-spectacular
+> add it to installed_apps
+> register within rest_framework config var
+> add drf-spectacular config var itself (metadata)
+> use the following command to generate a schema file
+> python manage.py spectacular --file schema.yml
+> dynamic schema routes were added to main urls.py
+> these will be available at 
+    localhost/api/schema/
+    localhost/api/schema/redoc/
+    localhost/api/schema/swagger-ui/
+> redoc and swagger-ui both require internet to load (for the first time)
+> commit

@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-
     'rest_framework',
     'corsheaders',
     'rest_framework.authtoken',
@@ -48,7 +47,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'dj_rest_auth',
     'dj_rest_auth.registration',
-
+    'drf_spectacular',
     'accounts.apps.AccountsConfig',
     'contacts.apps.ContactsConfig',
 ]
@@ -62,6 +61,13 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
     ],
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Django Phone Book",
+    "DESCRIPTION": "A simple phone book app with django and DRF",
+    "VERSION": "1.0.0",
 }
 
 MIDDLEWARE = [
@@ -167,5 +173,3 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
-
-
