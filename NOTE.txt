@@ -9,3 +9,10 @@
 > run migrations
 > create superuser (admin-admin@admin.com-1)
 > register the new user model in admin.py
+> check admin.py to see if it works (and admin user must be there)
+> commit
+> add contact model contacts/models.py
+> make migrations and specify contact name
+> apply migrations
+> add contact model to admin
+> test admin interface
