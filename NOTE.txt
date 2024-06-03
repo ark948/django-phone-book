@@ -156,3 +156,12 @@
 > adding pagination
 > add pagination configs to rest_framework config var in settings.py
 > test, works fine. commit
+
+> adding filtering
+> add filter config var to rest_framework config var in settings.py
+> pip install django-filter
+> add the following to contact list view:
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['title']
+> this topic can be further discussed, but for now this suffices.
+> test it
