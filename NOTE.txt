@@ -136,3 +136,19 @@
     localhost/api/schema/swagger-ui/
 > redoc and swagger-ui both require internet to load (for the first time)
 > commit
+
+> adding production environment
+> pip install environs
+> pip install environs[django]
+> instanciate the environs package in settnigs.py
+> create an .env file in root project directory and add it to .gitignore
+> add debug var to both env and settings.py
+> add secret_key to both
+> to generate secret_key you can use python's secrets module
+> update allowed_hosts
+> next is database url, dj-database-url is required that was installed with environs package django goodies
+> update settings.py > database config var to read from env file
+> compiling static files
+> configurations have already been placed, just run the command again
+> python manage.py collectstatic
+> done, commit
