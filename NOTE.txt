@@ -29,6 +29,7 @@
 > test the browsable api rest interface
 > commit
 
+
 > we need to add CORS and CSRF
 > pip install django-cors-headers
 > add 'corsheaders' to installed_apps after rest_framework
@@ -36,6 +37,7 @@
 > and create a cors_allowed_origins list config var
 > add CSRF protection after cors_allowed_origins
 > commit
+
 
 > compiling static files and folders
 > add a static directory to project folder
@@ -45,6 +47,7 @@
 > and three config vars after static_url in settings.py
 > run compile command
 > commit
+
 
 > update settings.py > rest_framework config var > default_permission_classes from allowAny to IsAuthenticated
 > use the admin interface to create some new users
@@ -56,6 +59,7 @@
 > add the custom permission to views
 > test the api
 > commit
+
 
 > to add authentication (registration)
 > udpate settings.py rest_framework config var (add authentication configs explicitly)
@@ -102,9 +106,10 @@
 > fixed it by adding password reset rouet to main urls.py
 > another problem is raised (similar but for password reset confirm)
 > IMPORTANT: This feature cannot be added using dj-rest-auth
-> last commit for dj-rest-auth was for 3 years ago. it is considered garbage
+> last commit for dj-rest-auth was for 3 years ago. it is considered obsolete
 > skip and use another approach later
 > commit
+
 
 > adding viewsets and routers for users list
 > add a user serializer to serializers.py to accounts app
@@ -122,6 +127,7 @@
 > check it out (there will be no difference in functionality, only less code was written)
 > commit
 
+
 > to add schema and documentation
 > pip install drf-spectacular
 > add it to installed_apps
@@ -136,6 +142,7 @@
     localhost/api/schema/swagger-ui/
 > redoc and swagger-ui both require internet to load (for the first time)
 > commit
+
 
 > adding production environment
 > pip install environs
@@ -153,9 +160,11 @@
 > python manage.py collectstatic
 > done, commit
 
+
 > adding pagination
 > add pagination configs to rest_framework config var in settings.py
 > test, works fine. commit
+
 
 > adding filtering
 > add filter config var to rest_framework config var in settings.py
@@ -165,3 +174,11 @@
     search_fields = ['title']
 > this topic can be further discussed, but for now this suffices.
 > test it
+
+
+> adding hyperlinks
+> users need to view the detail of their contacts in their contacts list
+> a new field must be added to contact serializer named details
+> do not forget to add it to included fields as well (still in contact serializer)
+> test it in contacts list, works fine
+
