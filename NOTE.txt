@@ -237,3 +237,10 @@
 > adding the index view to pages/views.py
 > linking main urls.py file to pages urls.py
 > everything is ok, commit
+
+
+> need to add web interface structure to base.html
+> updating base.html (cancelled)
+> i need to downlaod bootstrap and include in my base.html file
+> downloaded the compiled version 5.3, and added css and js folder to static folder
+> going to commit
