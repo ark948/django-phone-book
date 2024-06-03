@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'drf_spectacular',
     'accounts.apps.AccountsConfig',
     'contacts.apps.ContactsConfig',
+    'pages.apps.PagesConfig',
 ]
 
 REST_FRAMEWORK = {
@@ -111,7 +112,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

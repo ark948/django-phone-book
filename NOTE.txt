@@ -205,3 +205,35 @@
 > the default policy could be set globally, using the 'DEFAULT_THROTTLE_CLASSES' and 'DEFAULT_THROTTLE_RATES' in settngs.py>rest_framework
 > they can also be set in view
 > the throttle classes used by DRF, use django's cache backend. so it should also be configured
+
+
+> deploying (cancelled, going to add a web front and fix the authentication process)
+> first, let's check if all authentication and authorization routes are ok.
+> login (ok)
+> logout (ok)
+> signup (ok)
+> verification (error)
+> password reset (error)
+> for that i'm going to install postman and try it out.
+> i did installed it. and it's harder than i thought. i watch a tutorial later.
+
+> ok, there are two login routes,
+> api-auth/login/ -> for browsable api
+> dj-rest-auth/login/ -> just api (i'll use this one)
+> i will use httpie
+> cmd: http http://127.0.0.1:8000/dj-rest-auth/login/
+> this will just get the page
+> http POST http://127.0.0.1:8000/dj-rest-auth/login/ (on purpose, will give error)
+> http --json POST http://127.0.0.1:8000/dj-rest-auth/login/ username="testuser" password="hello123*"
+> only this worked
+
+
+> Moving all api routes to localhost//api/
+> OK
+> trying to add a pages app that will host the front page
+> adding pages app to installed_apps
+> need to add templates directory and configure its path in settings.py
+> adding urls.py to pages app
+> adding the index view to pages/views.py
+> linking main urls.py file to pages urls.py
+> everything is ok, commit
