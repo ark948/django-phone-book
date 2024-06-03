@@ -152,3 +152,7 @@
 > configurations have already been placed, just run the command again
 > python manage.py collectstatic
 > done, commit
+
+> adding pagination
+> add pagination configs to rest_framework config var in settings.py
+> test, works fine. commit
