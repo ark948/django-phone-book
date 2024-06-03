@@ -182,3 +182,26 @@
 > do not forget to add it to included fields as well (still in contact serializer)
 > test it in contacts list, works fine
 
+> other features that could be added, api throttling, caching, csv export and import, contacts' date localization
+> more tests
+> improved authentication and authorization system
+> frontend
+> encryption
+> extra comment field on contact model
+> selectable tables and batch delete (maybe on frontend)
+
+> i think i'm going to fix the authentication system and move on to deployment
+
+
+> But brefore that, let's just give throttling a try...
+> throttling is similar to permissions. it determines if a request should be authorized. it is used to control the rate of requests that client
+> ... client can make to api
+> like permissions, multiple thottles can be used
+> e.g. one restrictive throttle for unauthorized requests, and one less restrictive one for authenticated requests
+> as with permissions and authentication, throttles are also defined as classes
+> before running the main body of a view, each throttle in the list is checked, if any of these checks fails...
+> ... an exceptions.Throttled will be raised. and the main body will not run
+> setting the throttling policy:
+> the default policy could be set globally, using the 'DEFAULT_THROTTLE_CLASSES' and 'DEFAULT_THROTTLE_RATES' in settngs.py>rest_framework
+> they can also be set in view
+> the throttle classes used by DRF, use django's cache backend. so it should also be configured
