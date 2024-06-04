@@ -244,3 +244,5 @@
 > i need to downlaod bootstrap and include in my base.html file
 > downloaded the compiled version 5.3, and added css and js folder to static folder
 > going to commit
+> need to create the base.html with the help of bootstrap
+> my (basic web design skills are non-existant)
