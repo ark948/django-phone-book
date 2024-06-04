@@ -1,18 +1,54 @@
 <!DOCTYPE html>
-<html lang="fa">
-    <head>
-        
-    </head>
-    <body>
-        <style>
-            body {
-              background-image: url('/static/background.jpg');
-              background-repeat: no-repeat;
-              background-size: cover;
-            }
-          </style>
-          {% block content %}
-          {% endblock content %}
+<html dir="rtl" lang="fa">
 
-    </body>
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+  <title>{% block title %}{% endblock title %} - خانه</title>
+  <link href="/static/bootstrap/css/bootstrap.rtl.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <style>
+    body {
+      background-image: url('/static/background.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    nav {
+      font-size: larger;
+      font-weight: bolder;
+    }
+  </style>
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">صفحه اصلی</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">ورود</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">ثبت نام</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">API</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  {% block content %}
+  {% endblock content %}
+
+  <script src="/static/bootstrap/js/bootstrap.bundle.js"></script>
+</body>
+
 </html>

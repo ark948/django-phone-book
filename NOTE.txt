@@ -246,3 +246,5 @@
 > going to commit
 > need to create the base.html with the help of bootstrap
 > my (basic web design skills are non-existant)
+> still, i was able to add a background
+> now trying to add a navbar
