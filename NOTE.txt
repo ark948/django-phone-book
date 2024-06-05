@@ -280,3 +280,7 @@
 > successfully rendered the new contact quick form, but it looks terrible (fix later)
 > quick contact form is done.
 > now adding new contact (main)
+
+
+> seriously need to improve the appearance of forms
+> 
