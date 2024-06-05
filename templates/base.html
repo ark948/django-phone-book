@@ -6,47 +6,80 @@
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
   <title>{% block title %}{% endblock title %} - خانه</title>
   <link href="/static/bootstrap/css/bootstrap.rtl.min.css" rel="stylesheet">
-</head>
-
-<body>
   <style>
     body {
       background-image: url('/static/background.jpg');
       background-repeat: no-repeat;
       background-size: cover;
     }
-    nav {
-      font-size: larger;
-      font-weight: bolder;
+
+    header {
+      display: flex;
+      background: black;
+    }
+
+    header ul {
+      list-style-type: none;
+      height: 70px;
+    }
+
+    header ul li {
+      display: inline-block;
+      margin: 25px;
+    }
+
+    header ul li a {
+      font-family: B Nazanin;
+      text-decoration: none;
+      font-size: 25px;
+      color: white;
+    }
+    body main {
+      margin: 100px;
+    }
+
+    button {
+      border-radius: 10px;
+      width: 100px;
+      border: none;
+      background-color: gray;
+      margin: 10px;
+      height: 40px;
+      font-weight: bold;
+      padding: 0px;
+      color: white;
+      font-size: 20px;
+    }
+    button:hover {
+      text-decoration: underline;
+    }
+    body main p a {
+      font-size: 20px;
+      text-decoration: none;
+      color: black;
+    }
+    body main p {
+      margin-top: 30px;
     }
   </style>
-  <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">صفحه اصلی</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">ورود</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">ثبت نام</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">API</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  {% block content %}
-  {% endblock content %}
+</head>
+
+<body>
+  <header>
+    <ul>
+      <li class="logo"><a href="{% url 'pages:index' %}"></a></li>
+      <li><a href="{% url 'pages:index' %}">صفحه اصلی</a></li>
+      <li><a href="{% url 'accounts:login' %}">ورود</a></li>
+      <li><a href="{% url 'accounts:signup' %}">ثبت نام</a></li>
+      <li><a class="login-status" href="#">نام کاربری</a></li>
+    </ul>
+  </header>
+  <main>
+    {% block content %}
+    {% endblock content %}
+  </main>
+  <footer>
+  </footer>
 
   <script src="/static/bootstrap/js/bootstrap.bundle.js"></script>
 </body>

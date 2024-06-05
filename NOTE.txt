@@ -248,3 +248,23 @@
 > my (basic web design skills are non-existant)
 > still, i was able to add a background
 > now trying to add a navbar
+
+
+> navbar added.
+> login link must be added.
+> adding web view authentication (using django's built-in auth system)
+> create a directory in templates called registration
+> the templates directory path must be configured in settings.py for this section
+> add login and logout redirect to settings.py
+> add login.html and logout.html to registration folder in templates
+> add logged in status to base.html (later)
+> django has an accounts app and an auth app
+> auth provides routes for login and logout and accounts will provide signup (but url and view must be provided)
+> we can add both of them (auth and accounts) to the same url in main urls.py.
+> we'll add both of them to accounts/ path.
+> add the following two lines to main urls.py:
+    path("accounts/", include("accounts.urls")),
+    path("accounts/", include("django.contrib.auth.urls")),
+> since we already had an accounts app, we need to update its urls.py
+> add a signup view to accoutrs/urls.py
+> now define a signup view in accounts/views.py (accoutrs app will use this to just get the template)

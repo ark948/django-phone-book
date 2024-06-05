@@ -1,5 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-سلام.
+
+    {% if user.is_authenticated %}
+        سلام {{ user.username }}
+        <form method="post" action="{% url 'accounts:logout' %}">
+            {% csrf_token %}
+            <button type="submit">خروج</button>
+        </form>
+        <p><a href="#">لیست مخاطبین</a></p>
+        <p><a href="#">پروفایل کاربری</a></p>
+        <p><a href="#">تماس با ادمین</a></p>
+    {% else %}
+        <p>شما وارد سایت نشده اید.</p>
+        <a href="{% url 'accounts:login' %}">ورود</a>
+        <a href="{% url 'accounts:signup' %}">ثبت نام</a>
+    {% endif %}
+    
 {% endblock content %}

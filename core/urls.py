@@ -19,15 +19,17 @@ from django.urls import path, include
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 
 urlpatterns = [
-
-    path('dj-auth/', include('django.contrib.auth.urls')),
-    path('admin/', admin.site.urls),
-    path("api-auth/", include("rest_framework.urls")),
-    path("dj-rest-auth/", include("dj_rest_auth.urls")),
-    path("dj-rest-auth/registration/", include("dj_rest_auth.registration.urls")),
-    path("api/schema/", SpectacularAPIView.as_view(), name='schema'),
-    path("api/schema/redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
-    path("api/schema/swagger-ui/", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"),
+    path('admin/', admin.site.urls), # admin
+    path('dj-auth/', include('django.contrib.auth.urls')), # web
+    path("api-auth/", include("rest_framework.urls")), # api
+    path("dj-rest-auth/", include("dj_rest_auth.urls")), # api
+    path("dj-rest-auth/registration/", include("dj_rest_auth.registration.urls")), # api
+    path("api/schema/", SpectacularAPIView.as_view(), name='schema'), # api
+    path("api/schema/redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"), # api
+    path("api/schema/swagger-ui/", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"), # api
+    # authentication routes (login, logout, signup)
+    path("accounts/", include("accounts.urls")), # web view
+    # path("accounts/", include("django.contrib.auth.urls")), # web view
     path("api/", include("accounts.urls")),
     path("api/", include("contacts.urls")),
     path("", include("pages.urls")),
