@@ -1,5 +1,5 @@
 from django.urls import path
-from accounts.views import UserList, UserDetail, UserViewSet, SignUpView
+from accounts.views import UserList, UserDetail, UserViewSet, SignUpView, CustomLoginView
 from rest_framework.routers import SimpleRouter
 from django.views.generic import TemplateView
 from django.contrib.auth.views import LoginView, LogoutView
@@ -11,7 +11,7 @@ router.register(r"users", UserViewSet)
 
 urlpatterns = [
     path('signup/', SignUpView.as_view(), name='signup'),
-    path("login/", LoginView.as_view(template_name='registration/login.html'), name="login"),
+    path("login/", CustomLoginView.as_view(template_name='registration/login.html'), name="login"),
     path("logout/", LogoutView.as_view(), name="logout"),
 ]
 

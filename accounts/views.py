@@ -8,6 +8,7 @@ from accounts.forms import CustomUserCreationForm
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.shortcuts import redirect
+from django.contrib.auth.views import LoginView
 
 class UserList(generics.ListCreateAPIView):
     permission_classes = (IsAdminUser,)
@@ -33,3 +34,8 @@ class SignUpView(CreateView):
             messages.info(request, "شما وارد سایت شده اید.")
             return redirect("pages:index")
         return super().get(request, *args, **kwargs)
+    
+class CustomLoginView(LoginView):
+    def get_success_url(self) -> str:
+        messages.success(self.request, "با موفقیت وارد سایت شدید.")
+        return super().get_success_url()
