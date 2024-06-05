@@ -1,16 +1,15 @@
-from rest_framework import generics
+from rest_framework import generics, filters
 from contacts.models import Contact
 from contacts.serializers import ListContactSerializer, DetailContactSerializer
 from contacts.permissions import IsOwner
-from rest_framework import filters
 from rest_framework.throttling import UserRateThrottle
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
-from contacts.forms import NewContactQuickForm
+from contacts.forms import NewContactQuickForm, NewContactForm
 from django.contrib import messages
 from icecream import ic
-from django.views.generic import CreateView
+from contacts.utils import make_new_contact_entry
 
 
 class ContactsList(generics.ListCreateAPIView):
@@ -65,7 +64,32 @@ def new_contact_quick_process(request):
             ic(form.errors)
             messages.error(request, "خطا در پردازش فرم.")
     return redirect("contacts:index")
-                
-class NewContact(CreateView):
-    model = Contact
-    template_name = "contacts/new_contact.html"
+
+@login_required
+def new_contact(request):
+    context = {}
+    context["form"] = NewContactForm()
+    if request.method == "POST":
+        form = NewContactForm(request.POST)
+        if form.is_valid():
+            contact_object = {
+                "title" : form.cleaned_data["title"],
+                "first_name" : form.cleaned_data["first_name"],
+                "last_name" : form.cleaned_data["last_name"],
+                "phone_number" : form.cleaned_data["phone_number"],
+                "email" : form.cleaned_data["email"],
+                "address" : form.cleaned_data["address"],
+                "owner": request.user,
+            }
+            try:
+                result = make_new_contact_entry(contact_object)
+            except Exception as error:
+                ic(error)
+            if result["status"] == True:
+                messages.success(request, "مخاطب افزوده شد.")
+                return redirect("contacts:index")
+        else:
+            messages.error(request, "خطا در پردازش فرم.")
+            ic(form.errors)
+            return redirect("contacts:index")
+    return render(request, "contacts/new_contact.html", context=context)
