@@ -5,7 +5,8 @@ from accounts.models import CustomUser
 class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm):
         model = CustomUser
-        fields = UserCreationForm.Meta.fields + ("name",)
+        fields = UserCreationForm.Meta.fields + ("email",)
+        # by default signup form does not ask for email
 
 
 class CustomUserChangeForm(UserChangeForm):
