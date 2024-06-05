@@ -8,7 +8,7 @@
             {% csrf_token %}
             <button type="submit">خروج</button>
         </form>
-        <p><a href="#">لیست مخاطبین</a></p>
+        <p><a href="{% url 'contacts:index' %}">لیست مخاطبین</a></p>
         <p><a href="#">پروفایل کاربری</a></p>
         <p><a href="#">تماس با ادمین</a></p>
     {% else %}

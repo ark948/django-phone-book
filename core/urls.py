@@ -31,6 +31,6 @@ urlpatterns = [
     path("accounts/", include("accounts.urls")), # web view
     # path("accounts/", include("django.contrib.auth.urls")), # web view
     path("api/", include("accounts.urls")),
-    path("api/", include("contacts.urls")),
+    path("contacts/", include("contacts.urls")),
     path("", include("pages.urls")),
 ]

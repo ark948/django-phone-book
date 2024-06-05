@@ -268,3 +268,15 @@
 > since we already had an accounts app, we need to update its urls.py
 > add a signup view to accoutrs/urls.py
 > now define a signup view in accounts/views.py (accoutrs app will use this to just get the template)
+> had to define a custom login view by inheriting LoginView, and override it to add a successful login message
+
+
+> added contacts index page, table and pagination
+> now trying to add new contact add feature (quick version first)
+> we can use django-crispy-forms
+> but first i am going to develop raw forms
+> since new quick contact will be rendered in index page, it only requires a proccess function
+> added new quickcontactform to contacts/forms.py
+> successfully rendered the new contact quick form, but it looks terrible (fix later)
+> quick contact form is done.
+> now adding new contact (main)

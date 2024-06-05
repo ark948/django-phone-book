@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}لیست مخاطبین{% endblock title %}
+
+{% block content %}
+
+<p>
+<h3>لیست مخاطبین</h3>
+</p>
+{% if page_obj %}
+<table class="table table-sm">
+    <thead class="table-dark">
+        <tr>
+            <th>#</th>
+            <th>عنوان</th>
+            <th>شماره</th>
+            <th>نام کامل</th>
+            <th>ایمیل</th>
+            <th>آدرس</th>
+            <th>ایجاد شده در:</th>
+            <th>آخرین ویرایش</th>
+            <th>عملیات</th>
+        </tr>
+    </thead>
+    {% for item in page_obj %}
+    <tr>
+        <td>{{ forloop.counter0|add:page_obj.start_index }}</td>
+        <td>{{ item.title }}</td>
+        <td>{{ item.phone_number }}</td>
+        <td>{{ item.full_name }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.address }}</td>
+        <td>{{ item.date_created }}</td>
+        <td>{{ item.last_modified }}</td>
+        <td>
+            <form method="post" action="#" style="display: inline-block;">
+                {% csrf_token %}
+                <input type="hidden" id="id_to_edit" name="id_to_edit" value="{{ item.id }}">
+                <button id="button1" class="btn btn-warning" type="submit">ویرایش</button>
+            </form>
+            |
+            <form method="post" action="#" style="display: inline-block;"
+                onsubmit="return confirm('آیا از حذف این مخاطب اطمینان دارید؟')">
+                {% csrf_token %}
+                <input type="hidden" id="id_to_delete" name="id_to_delete" value="{{ item.id }}">
+                <button id="button2" class="btn btn-danger" type="submit">حذف</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+        <a href="?page=1">&laquo;ص-اول</a>
+        &nbsp;&nbsp;
+        <a href="{{ page_obj.previous_page_number }}">قبل</a>
+        {% endif %}
+
+        <span class="current">
+            صفحه {{ page_obj.number }} از {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">بعد</a>
+        &nbsp;&nbsp;
+        <a href="?page={{ page_obj.paginator.num_pages }}">آخر &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+{% else %}
+<p>لیست مخاطبین شما خالی می باشد.</p>
+{% endif %}
+
+<p><a href="#">افزودن مخاطب</a></p>
+
+<p>
+    <h6>> افزودن سریع</h6>
+    <form method="post" action="{% url 'contacts:new-contact-quick' %}">
+        {% csrf_token %}
+        {{ new_contact_quick.as_p }}
+        <button class="btn btn-success" type="submit">ذخیره</button>
+    </form>
+</p>
+
+
+{% endblock content %}
