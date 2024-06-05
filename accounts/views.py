@@ -1,10 +1,13 @@
 from django.contrib.auth import get_user_model
+from django.http import HttpRequest, HttpResponse
 from rest_framework import generics, viewsets
 from accounts.serializers import UserSerializer
 from rest_framework.permissions import IsAdminUser
 from django.views.generic import CreateView
 from accounts.forms import CustomUserCreationForm
 from django.urls import reverse_lazy
+from django.contrib import messages
+from django.shortcuts import redirect
 
 class UserList(generics.ListCreateAPIView):
     permission_classes = (IsAdminUser,)
@@ -23,4 +26,10 @@ class UserViewSet(viewsets.ModelViewSet):
 class SignUpView(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('accounts:login')
-    template_name = "registration/signup.html" 
+    template_name = "registration/signup.html"
+
+    def get(self, request: HttpRequest, *args: str, **kwargs: reverse_lazy) -> HttpResponse:
+        if request.user.is_authenticated:
+            messages.info(request, "شما وارد سایت شده اید.")
+            return redirect("pages:index")
+        return super().get(request, *args, **kwargs)
