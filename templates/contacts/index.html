@@ -33,7 +33,7 @@
         <td>{{ item.date_created }}</td>
         <td>{{ item.last_modified }}</td>
         <td>
-            <form method="post" action="#" style="display: inline-block;">
+            <form method="post" action="{% url 'contacts:edit-contact' %}" style="display: inline-block;">
                 {% csrf_token %}
                 <input type="hidden" id="id_to_edit" name="id_to_edit" value="{{ item.id }}">
                 <button id="button1" class="btn btn-warning" type="submit">ویرایش</button>

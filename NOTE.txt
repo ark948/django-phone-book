@@ -308,4 +308,5 @@
 > not much better (skip this topic for now and come back to it later)
 
 > need to add edit contact and delete contact
-> delete first
+> delete first (done)
+> edit contact (done)
