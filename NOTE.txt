@@ -310,3 +310,7 @@
 > need to add edit contact and delete contact
 > delete first (done)
 > edit contact (done)
+> new plan: i'm going complete this project, and then move on to learning front-end
+> right now, only features left, are csv export, and ... email verification, and password reset fix
+> profile edit, such as username and email edit and password change
+> csv export/download is complete

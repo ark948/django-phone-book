@@ -7,6 +7,11 @@
 <p>
 <h3>لیست مخاطبین</h3>
 </p>
+<form method="post" action="{% url 'contacts:download-csv' %}">
+    {% csrf_token %}
+    <input name="id_for_csv" type="hidden" value="{{ user.id }}" style="display: inline;">
+    <button class="btn btn-primary" type="submit" style="width: 125px;">ذخیره...(csv)</button>
+</form>
 {% if page_obj %}
 <table class="table table-sm">
     <thead class="table-dark">
@@ -76,14 +81,11 @@
     <a href="{% url 'contacts:new-contact' %}">افزودن مخاطب</a>
 </p>
 
-<p>
-    <h6>> افزودن سریع</h6>
-    <form method="post" action="{% url 'contacts:new-contact-quick' %}">
-        {% csrf_token %}
-        {{ new_contact_quick.as_p }}
-        <button class="btn btn-success" type="submit">ذخیره</button>
-    </form>
-</p>
-
+<h6>> افزودن سریع</h6>
+<form method="post" action="{% url 'contacts:new-contact-quick' %}">
+    {% csrf_token %}
+    {{ new_contact_quick.as_p }}
+    <button class="btn btn-success" type="submit">ذخیره</button>
+</form>
 
 {% endblock content %}

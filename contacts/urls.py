@@ -7,7 +7,8 @@ from contacts.views import (
     new_contact,
     delete_contact,
     edit_contact,
-    edit_contact_process
+    edit_contact_process,
+    download_csv
     )
 
 app_name = 'contacts'
@@ -19,5 +20,6 @@ urlpatterns = [
     path("delete-contact/", delete_contact, name="delete-contact"),
     path("edit-contact/", edit_contact, name="edit-contact"),
     path("edit-contact-process/", edit_contact_process, name="edit-contact-process"),
+    path("download-csv/", download_csv, name="download-csv"),
     path("", contacts_index, name="index"),
 ]

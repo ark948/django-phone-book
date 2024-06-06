@@ -11,6 +11,7 @@ from django.contrib import messages
 from icecream import ic
 from contacts.utils import make_new_contact_entry
 from django.http import HttpResponseForbidden
+import csv
 
 
 class ContactsList(generics.ListCreateAPIView):
@@ -171,4 +172,33 @@ def edit_contact_process(request):
             except Exception as update_process_error:
                 ic(update_process_error)
                 return redirect("contacts:index")
+    return redirect("contacts:index")
+
+
+@login_required
+def download_csv(request):
+    if request.method == "POST":
+        try:
+            user_id = request.POST.get("id_for_csv")
+            if request.user.id != int(user_id):
+                return HttpResponseForbidden()
+        except Exception as error:
+            messages.error(request, "این اقدام در حال حاضر امکان پذیر نیست.")
+            return redirect("contacts:index")
+        try:
+            user_item_list = Contact.objects.filter(owner__pk=request.user.pk)
+        except Exception as error:
+            messages.error(request, "خطا در پردازش درخواست.")
+            return redirect("contacts:index")
+        try: 
+            response = HttpResponse(
+                    content_type="text/csv",
+                    headers={"Content-Disposition": 'attachment; filename="{username}_contacts.csv"'.format(username=request.user.username)},)
+            writer = csv.writer(response)
+            writer.writerow(["title", "first_name", "last_name", "phone_number", "email", "address", "date_created", "last_modified"])
+            for item in user_item_list:
+                writer.writerow([item.title, item.first_name, item.last_name, item.email, item.address, item.date_created, item.last_modified])
+                return response
+        except Exception as error:
+            messages.error(request, "خطا در پردازش درخواست.")
     return redirect("contacts:index")
