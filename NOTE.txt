@@ -283,4 +283,29 @@
 
 
 > seriously need to improve the appearance of forms
-> 
+> going to add django crispy forms and crispy bootstrap 5
+> crispy-bootstrap5 is bootstrap 5 template for django-crispy-forms
+> pip install django-crispy-forms
+> add 'crispy-forms' to installed_apps
+> IMPORTANT: in production, activate Django template cache loader
+> pip install crispy-bootstrap5
+> update settings.py
+        INSTALLED_APPS = (
+        ...
+        "crispy_forms",
+        "crispy_bootstrap5",
+        ...
+    )
+    CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+    CRISPY_TEMPLATE_PACK = "bootstrap5"
+> added both
+> forms look a bit better, but still awful
+> going to try another package called django-bootstrap5
+> previous two packages can stay, until i decide which approach to take
+> pip install django-bootstrap5
+> add 'django_bootstrap5', to installed_apps
+> tags can be loaded in templates
+> not much better (skip this topic for now and come back to it later)
+
+> need to add edit contact and delete contact
+> delete first

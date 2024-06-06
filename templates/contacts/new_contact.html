@@ -1,11 +1,15 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block content %}
+<h3>افزودن مخاطب جدید</h3>
 
-    <form method="post" action="#">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">ثبت</button>
+<div class="form-container" style="width: 500px;">
+    <form method="post" action="{% url 'contacts:new-contact' %}" class="form">
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary">ثبت</button>
     </form>
+</div>
+
 
 {% endblock content %}

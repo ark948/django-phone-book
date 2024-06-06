@@ -39,7 +39,7 @@
                 <button id="button1" class="btn btn-warning" type="submit">ویرایش</button>
             </form>
             |
-            <form method="post" action="#" style="display: inline-block;"
+            <form method="post" action="{% url 'contacts:delete-contact' %}" style="display: inline-block;"
                 onsubmit="return confirm('آیا از حذف این مخاطب اطمینان دارید؟')">
                 {% csrf_token %}
                 <input type="hidden" id="id_to_delete" name="id_to_delete" value="{{ item.id }}">

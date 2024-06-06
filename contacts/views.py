@@ -45,6 +45,7 @@ def contacts_index(request):
     context['new_contact_quick'] = NewContactQuickForm()
     return render(request, "contacts/index.html", context=context)
 
+
 @login_required
 def new_contact_quick_process(request):
     if request.method == "POST":
@@ -64,6 +65,7 @@ def new_contact_quick_process(request):
             ic(form.errors)
             messages.error(request, "خطا در پردازش فرم.")
     return redirect("contacts:index")
+
 
 @login_required
 def new_contact(request):
@@ -93,3 +95,17 @@ def new_contact(request):
             ic(form.errors)
             return redirect("contacts:index")
     return render(request, "contacts/new_contact.html", context=context)
+
+
+@login_required
+def delete_contact(request):
+    if request.method == "POST":
+        item_to_delete = Contact.objects.get(pk=int(request.POST.get("id_to_delete")))
+        try:
+            if item_to_delete.owner.id == request.user.id:
+                item_to_delete.delete()
+                messages.info(request, "مخاطب حذف شد.")
+        except Exception as error:
+            ic(error)
+            messages.error(request, "خطایی رخ داده است.")
+    return redirect("contacts:index")         
