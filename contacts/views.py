@@ -39,7 +39,7 @@ class ContactDetail(generics.RetrieveUpdateDestroyAPIView):
 @login_required
 def contacts_index(request):
     context = {}
-    contacts_list = Contact.objects.filter(owner__pk=request.user.pk)
+    contacts_list = Contact.objects.filter(owner__pk=request.user.pk).order_by("date_created")
     paginator = Paginator(contacts_list, 5)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
