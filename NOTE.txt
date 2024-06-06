@@ -314,3 +314,7 @@
 > right now, only features left, are csv export, and ... email verification, and password reset fix
 > profile edit, such as username and email edit and password change
 > csv export/download is complete
+> fixed a warning in pagination
+> adding local date time (persian/shemsi calendar)
+> note: extra tags directory must be called templatetags
+> successfully added persian tags

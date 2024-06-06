@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load contacts_extra_tags %}
 
 {% block title %}لیست مخاطبین{% endblock title %}
 
@@ -35,8 +36,8 @@
         <td>{{ item.full_name }}</td>
         <td>{{ item.email }}</td>
         <td>{{ item.address }}</td>
-        <td>{{ item.date_created }}</td>
-        <td>{{ item.last_modified }}</td>
+        <td>{{ item.date_created|to_persian }}</td>
+        <td>{{ item.last_modified|to_persian }}</td>
         <td>
             <form method="post" action="{% url 'contacts:edit-contact' %}" style="display: inline-block;">
                 {% csrf_token %}
