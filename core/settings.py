@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'dj_rest_auth',
     'dj_rest_auth.registration',
     'drf_spectacular',
+    'apis.apps.ApisConfig',
     'accounts.apps.AccountsConfig',
     'contacts.apps.ContactsConfig',
     'pages.apps.PagesConfig',

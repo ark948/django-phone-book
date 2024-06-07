@@ -30,7 +30,7 @@ urlpatterns = [
     # authentication routes (login, logout, signup)
     path("accounts/", include("accounts.urls")), # web view
     # path("accounts/", include("django.contrib.auth.urls")), # web view
-    path("api/", include("accounts.urls")),
+    path("api/", include("apis.urls")),
     path("contacts/", include("contacts.urls")),
     path("", include("pages.urls")),
 ]

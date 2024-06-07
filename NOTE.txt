@@ -318,3 +318,18 @@
 > adding local date time (persian/shemsi calendar)
 > note: extra tags directory must be called templatetags
 > successfully added persian tags
+
+
+> Problem found
+> localhost/api/ points to 404
+> maybe i should have added a main api app in the first place
+> i will try to add a main api app
+> added and apis app
+> this app will hold be the entry point to api
+> and will include links to contacts and accounts (users) api
+> contacts and accounts/users are valid through main api (works fine)
+> although can't be sure until some tests are written
+> i will check if i can move other routes to main api as well (rest auth stuff)
+> was unable to move shcema urls to main urls
+> i don't think there is much point in trying to move other routes
+> commiting...

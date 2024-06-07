@@ -7,7 +7,10 @@ from django.contrib.auth.views import LoginView, LogoutView
 app_name = 'accounts'
 
 router = SimpleRouter()
-router.register(r"users", UserViewSet)
+router.register(r"users", UserViewSet, basename='user')
+# provided by viewset and router
+# users
+# user-instance
 
 urlpatterns = [
     path('signup/', SignUpView.as_view(), name='signup'),
