@@ -36,6 +36,13 @@ class SignUpView(CreateView):
         return super().get(request, *args, **kwargs)
     
 class CustomLoginView(LoginView):
+
+    def get(self, request: HttpRequest, *args: str, **kwargs: reverse_lazy) -> HttpResponse:
+        if request.user.is_authenticated:
+            messages.info(request, "شما وارد سایت شده اید.")
+            return redirect("pages:index")
+        return super().get(request, *args, **kwargs)
+    
     def get_success_url(self) -> str:
         messages.success(self.request, "با موفقیت وارد سایت شدید.")
         return super().get_success_url()

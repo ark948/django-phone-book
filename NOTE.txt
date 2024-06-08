@@ -333,3 +333,9 @@
 > was unable to move shcema urls to main urls
 > i don't think there is much point in trying to move other routes
 > commiting...
+
+> final steps
+> add basic search feature
+> error handling
+> improve front-end with (links, buttons, general appearance)
+> write tests
