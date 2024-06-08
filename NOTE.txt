@@ -339,3 +339,9 @@
 > error handling
 > improve front-end with (links, buttons, general appearance)
 > write tests
+
+> adding error handling
+> error handlers will be added to pages app
+> added two views (404 and 500) to pages/views.py
+> now, we need to register these views as default handlers for 404 and 500 errors
+> we will do that in main urls.py file

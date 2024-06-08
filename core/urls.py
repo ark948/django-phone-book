@@ -18,6 +18,9 @@ from django.contrib import admin
 from django.urls import path, include
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 
+handler404 = "pages.views.error_404"
+handler500 = "pages.views.error_500"
+
 urlpatterns = [
     path('admin/', admin.site.urls), # admin
     path('dj-auth/', include('django.contrib.auth.urls')), # web
