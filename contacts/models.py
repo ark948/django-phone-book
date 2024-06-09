@@ -24,4 +24,4 @@ class Contact(models.Model):
         return f"{self.first_name} {self.last_name}"
     
     def get_absolute_url(self):
-        return reverse("contact_api:contact_detail", kwargs={"pk": self.pk})
+        return reverse("contacts:contact-detail", kwargs={"pk": self.pk})

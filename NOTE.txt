@@ -345,3 +345,46 @@
 > added two views (404 and 500) to pages/views.py
 > now, we need to register these views as default handlers for 404 and 500 errors
 > we will do that in main urls.py file
+
+> using tutorial provided by mozilla (https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Testing)
+> trying to add some tests
+> added my own test package structure to contacts app
+> every part of apps will have their own test module like model and views and forms
+> regular tests.py file (provided by django), i deleted it (commented it) is it's no longer needed
+> NOTE: the original tests.py file must be deleted (otherwise it will throw error or some sort of conflict)
+> if running python manage.py test, resulted in 'valueerror, missing staticfiles' error:
+> then static files need to be compiled using collectstatic command or something related to static files
+> the default verbosity level is 1, choices are 0,1,2,3
+> if tests are independant, on a multiprocessor machine, they can be ran simultaneously:
+> python3 manage.py test --parallel auto (auto specifies the number of cores to use)
+> to run specific test for some app or module or...
+> python3 manage.py test catalog.tests.test_models.YourTestClass.test_one_plus_one_equals_two (longest version)
+> test template:
+    from django.test import TestCase
+
+    class YourTestClass(TestCase):
+        @classmethod
+        def setUpTestData(cls):
+            # runs once only
+            print("setUpTestData: Run once to set up non-modified data for all class methods.")
+            pass
+
+        def setUp(self):
+            # runs once for every method
+            print("setUp: Run once for every test method to set up clean data.")
+            pass
+
+        def test_false_is_false(self):
+            print("Method: test_false_is_false.")
+            self.assertFalse(False)
+
+        def test_true_is_true(self):
+            print("Method: test_false_is_true.")
+            self.assertTrue(True)
+
+        def test_one_plus_one_equals_two(self):
+            print("Method: test_one_plus_one_equals_two.")
+            self.assertEqual(1 + 1, 2)
+
+        # there is also a tearDown() method which was not used here. its job is automatically done byt TestCase
+> 
