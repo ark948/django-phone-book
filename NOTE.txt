@@ -387,4 +387,7 @@
             self.assertEqual(1 + 1, 2)
 
         # there is also a tearDown() method which was not used here. its job is automatically done byt TestCase
-> 
+
+> add tests for model and forms, but i'm skipping to more important tests
+> note: if using SimpleTestCase (for test with no database), the setUpTestData method cannot be used
+> instead, use setUp method

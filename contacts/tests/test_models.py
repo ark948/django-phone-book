@@ -38,7 +38,7 @@ class ContactModelTest(TestCase):
     def test_get_absolute_url(self):
         self.assertEqual(self.contact.get_absolute_url(), '/contacts/api/1/')
 
-# labels (all lables done)
+# all labels (done)
 # lengths
-# absolute url
+# absolute url (done)
 # moving contact instance to setuptestdata
