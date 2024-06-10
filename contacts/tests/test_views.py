@@ -10,10 +10,10 @@ from accounts.models import CustomUser
 
 class ContactsViewsTest(TestCase):
     def setUp(self) -> None:
-        test_user = CustomUser.objects.create()
-        test_user.username = "testuser1"
-        test_user.set_password("hello123*ABC")
-        test_user.save()
+        self.test_user = CustomUser.objects.create()
+        self.test_user.username = "testuser1"
+        self.test_user.set_password("hello123*ABC")
+        self.test_user.save()
 
     def test_redirect_if_not_logged_in(self):
         response = self.client.get(reverse("contacts:index"))
@@ -32,6 +32,16 @@ class ContactsViewsTest(TestCase):
 
         # check if template was correct
         self.assertTemplateUsed(response, "contacts/index.html")
+
+    def test_contact_detail_page_is_accessible(self):
+        login = self.client.login(username="testuser1", password="hello123*ABC")
+        Contact.objects.create(title="test", owner=CustomUser.objects.get(id=1))
+        self.contact_item = Contact.objects.get(id=1)
+        owner = self.contact_item.owner
+        self.assertTrue(isinstance(owner, get_user_model()))
+        response = self.client.get(reverse("contacts:contact-detail", kwargs={'pk': 1}))
+        self.assertEqual(response.status_code, 200)
+
 
 # urls (both with reverse and manual)
 # template used
